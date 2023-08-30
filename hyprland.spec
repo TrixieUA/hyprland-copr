@@ -97,7 +97,6 @@ BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-res)
 BuildRequires:  pkgconfig(xcb-xfixes)
-BuildRequires:  clang
 
 # Upstream insists on always building against very current snapshots of
 # wlroots, and doesn't provide a method for building against a system copy.
