@@ -19,6 +19,8 @@ Patch:          0001-Partially-revert-meson-add-DGIT-arguments-321.patch
 # The system wlroots disables this dependency as well.
 Patch:          0002-Disable-xcb-errors-in-bundled-wlroots.patch
 
+Patch:          nvidia.patch
+
 BuildRequires:  meson
 BuildRequires:  gcc-c++
 BuildRequires:  jq
