@@ -9,7 +9,7 @@ Summary:        Dynamic tiling Wayland compositor that doesn't sacrifice on its 
 # subproject/udis86 is BSD-2-Clause
 License:        BSD-3-Clause AND MIT AND BSD-2-Clause
 URL:            https://github.com/hyprwm/Hyprland
-Source:         %{url}/releases/download/v%{version}/source-v%{version}.tar.gz
+Source0:         %{url}/releases/download/v%{version}/source-v%{version}.tar.gz
 
 # Revert passing git information to meson to avoid a build requirment on git.
 # https://github.com/hyprwm/Hyprland/commit/0eebf3ab1614a34433cc4d208be84b930b88e25c
