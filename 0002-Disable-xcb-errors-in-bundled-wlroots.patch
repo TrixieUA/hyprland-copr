@@ -1,0 +1,27 @@
+From f2b9fed93da0fcf4d4caa8219883aa20679b3907 Mon Sep 17 00:00:00 2001
+From: Carl George <carl@george.computer>
+Date: Mon, 29 Aug 2022 20:51:17 -0500
+Subject: [PATCH 2/2] Disable xcb-errors in bundled wlroots
+
+The dependency is optional, and xcb-errors is not yet packaged in
+Fedora.  The system wlroots disables this dependency as well.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 6e57eed..e47b744 100644
+--- a/meson.build
++++ b/meson.build
+@@ -29,7 +29,7 @@ add_project_arguments(
+   ],
+   language: 'cpp')
+ 
+-wlroots = subproject('wlroots', default_options: ['examples=false'])
++wlroots = subproject('wlroots', default_options: ['examples=false', 'xcb-errors=disabled'])
+ have_xwlr = wlroots.get_variable('features').get('xwayland')
+ xcb_dep = dependency('xcb', required: get_option('xwayland'))
+ 
+-- 
+2.39.2
+

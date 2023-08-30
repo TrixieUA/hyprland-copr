@@ -1,0 +1,40 @@
+From 6ea4b43675108ef0b49e948e6f64bc6b1452740a Mon Sep 17 00:00:00 2001
+From: Carl George <carl@george.computer>
+Date: Mon, 29 Aug 2022 18:50:00 -0500
+Subject: [PATCH 1/2] Partially revert "meson: add -DGIT arguments (#321)"
+
+This partially reverts commit 0eebf3ab1614a34433cc4d208be84b930b88e25c.
+---
+ meson.build | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 0ae3d51..6e57eed 100644
+--- a/meson.build
++++ b/meson.build
+@@ -20,22 +20,12 @@ else
+   error('Could not configure current C++ compiler (' + cpp_compiler.get_id() + ' ' + cpp_compiler.version() + ') with required C++ standard (C++23)')
+ endif
+ 
+-GIT_BRANCH = run_command('git', 'rev-parse', '--abbrev-ref', 'HEAD', check: false).stdout().strip()
+-GIT_COMMIT_HASH = run_command('git', 'rev-parse', 'HEAD', check: false).stdout().strip()
+-GIT_COMMIT_MESSAGE = run_command('sh', '-c', 'git show | head -n 5 | tail -n 1', check: false).stdout().strip()
+-GIT_DIRTY = run_command('sh', '-c', 'git diff-index --quiet HEAD -- || echo "dirty"', check: false).stdout().strip()
+-
+ add_project_arguments(
+   [
+     '-Wno-unused-parameter',
+     '-Wno-unused-value',
+     '-Wno-missing-field-initializers',
+     '-Wno-narrowing',
+-
+-    f'-DGIT_BRANCH="@GIT_BRANCH@"',
+-    f'-DGIT_COMMIT_HASH="@GIT_COMMIT_HASH@"',
+-    f'-DGIT_COMMIT_MESSAGE="@GIT_COMMIT_MESSAGE@"',
+-    f'-DGIT_DIRTY="@GIT_DIRTY@"',
+   ],
+   language: 'cpp')
+ 
+-- 
+2.39.2
+
