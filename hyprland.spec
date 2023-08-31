@@ -1,6 +1,6 @@
 Name:           hyprland
 Version:        0.29.0
-Release:        %autorelease
+Release:        %autorelease.nvidia
 Summary:        Dynamic tiling Wayland compositor that doesn't sacrifice on its looks
 
 # main source code is BSD-3-Clause
@@ -9,17 +9,16 @@ Summary:        Dynamic tiling Wayland compositor that doesn't sacrifice on its 
 # subproject/udis86 is BSD-2-Clause
 License:        BSD-3-Clause AND MIT AND BSD-2-Clause
 URL:            https://github.com/hyprwm/Hyprland
-Source0:         %{url}/releases/download/v%{version}/source-v%{version}.tar.gz
+Source:         %{url}/releases/download/v%{version}/source-v%{version}.tar.gz
 
 # Revert passing git information to meson to avoid a build requirment on git.
 # https://github.com/hyprwm/Hyprland/commit/0eebf3ab1614a34433cc4d208be84b930b88e25c
-Patch0:          0001-Partially-revert-meson-add-DGIT-arguments-321.patch
+Patch:          0001-Partially-revert-meson-add-DGIT-arguments-321.patch
 
 # The dependency is optional, and xcb-errors is not yet packaged in Fedora.
 # The system wlroots disables this dependency as well.
-Patch1:          0002-Disable-xcb-errors-in-bundled-wlroots.patch
-
-Patch2:          nvidia.patch
+Patch:          0002-Disable-xcb-errors-in-bundled-wlroots.patch
+Patch:		nvidia.patch
 
 BuildRequires:  meson
 BuildRequires:  gcc-c++
@@ -97,6 +96,7 @@ BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-res)
 BuildRequires:  pkgconfig(xcb-xfixes)
+BuildRequires:  clang
 
 # Upstream insists on always building against very current snapshots of
 # wlroots, and doesn't provide a method for building against a system copy.
